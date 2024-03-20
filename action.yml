@@ -1,0 +1,75 @@
+name: 'Notification action'
+description: 'Notification reusable action'
+author: 'Gutenberg Technology'
+
+
+inputs:
+  dd-api-key:
+    description: 'Datadog api key'
+    required: false
+    default: "YOUR_DATADOG_API_KEY"
+  dd-platform:
+    description: 'Platform'
+    required: false
+  dd-env:
+    description: 'Environment and env'
+    required: false
+  dd-service:
+    description: 'Service'
+    required: false
+  dd-version:
+    description: 'Version'
+    required: false
+  dd-event-title:
+    description: 'Event title'
+    required: true
+  dd-event-text:
+    description: 'Event text'
+    required: true
+  
+  github-sha:
+    description: 'GitHub sha'
+    required: false
+  github-last-job-result:
+    description: 'GitHub last job result'
+    required: true
+  github-repository-owner:
+    description: 'GitHub repository owner'
+    required: true
+  github-repository:
+    description: 'GitHub repository name'
+    required: false
+  github-repository-url:
+    description: 'GitHub repository url'
+    required: false
+  github-workflow-url:
+    description: 'GitHub workflow url'
+    required: false
+
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Datadog - Send Event
+      uses: masci/datadog@v1.7.1
+      with:
+        api-key: ${{ inputs.datadog-api-key }}
+        events: |
+          - title: ${{ inputs.dd-event-title }}"
+            text: ${{ inputs.dd-event-text }}"
+            alert_type: ${{ inputs.github-last-job-result }}
+            host: "GitHub/${{ inputs.github-repository-owner }}"
+            tags:
+              - "platform:${{ inputs.dd-platform }}"
+              - "environment:${{ inputs.dd-env }}"
+              - "env:${{ inputs.dd-env }}"
+              - "version:${{ inputs.dd-version }}"
+              - "service:${{ inputs.dd-service }}"
+              - "source:github"
+              - "github.sha:${{ inputs.github-sha }}"
+              - "github.last-job-result:${{ inputs.github-last-job-result }}"
+              - "github.repository:${{ inputs.github-repository }}"
+              - "github.repository-url:${{ inputs.github-repository-url }}"
+              - "github.workflow-url:${{ inputs.github-workflow-url }}"
+        
+
