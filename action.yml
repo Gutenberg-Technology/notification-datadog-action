@@ -53,7 +53,7 @@ runs:
     - name: Datadog - Send Event
       uses: masci/datadog@v1.7.1
       with:
-        api-key: ${{ inputs.datadog-api-key }}
+        api-key: ${{ inputs.dd-api-key }}
         events: |
           - title: ${{ inputs.dd-event-title }}"
             text: ${{ inputs.dd-event-text }}"
