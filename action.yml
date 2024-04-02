@@ -26,6 +26,9 @@ inputs:
   dd-event-text:
     description: 'Event text'
     required: true
+  dd-event-alert-type:
+    description: 'Event alert type'
+    required: true
   
   github-sha:
     description: 'GitHub sha'
@@ -57,7 +60,7 @@ runs:
         events: |
           - title: ${{ inputs.dd-event-title }}"
             text: ${{ inputs.dd-event-text }}"
-            alert_type: ${{ inputs.github-last-job-result }}
+            alert_type: ${{ inputs.input.dd-event-alert-type }}
             host: "GitHub/${{ inputs.github-repository-owner }}"
             tags:
               - "platform:${{ inputs.dd-platform }}"
