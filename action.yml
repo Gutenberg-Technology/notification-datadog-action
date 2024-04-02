@@ -74,6 +74,6 @@ runs:
               - "github.repository:${{ inputs.github-repository }}"
               - "github.repository-url:${{ inputs.github-repository-url }}"
               - "github.workflow-url:${{ inputs.github-workflow-url }}"
-              - "github.dd-event-alert-type:${{ inputs.dd-event-alert-type }}"
+
         
 
