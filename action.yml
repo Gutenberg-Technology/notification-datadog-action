@@ -60,7 +60,7 @@ runs:
         events: |
           - title: ${{ inputs.dd-event-title }}"
             text: ${{ inputs.dd-event-text }}"
-            alert_type: ${{ inputs.input.dd-event-alert-type }}
+            alert_type: ${{ inputs.dd-event-alert-type }}
             host: "GitHub/${{ inputs.github-repository-owner }}"
             tags:
               - "platform:${{ inputs.dd-platform }}"
