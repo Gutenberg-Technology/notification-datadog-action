@@ -58,9 +58,9 @@ runs:
       with:
         api-key: ${{ inputs.dd-api-key }}
         events: |
-          - title: ${{ inputs.dd-event-title }}"
-            text: ${{ inputs.dd-event-text }}"
-            alert_type: ${{ inputs.dd-event-alert-type }}
+          - title: "${{ inputs.dd-event-title }}"
+            text: "${{ inputs.dd-event-text }}"
+            alert_type: "${{ inputs.dd-event-alert-type }}"
             host: "GitHub/${{ inputs.github-repository-owner }}"
             tags:
               - "platform:${{ inputs.dd-platform }}"
@@ -74,5 +74,6 @@ runs:
               - "github.repository:${{ inputs.github-repository }}"
               - "github.repository-url:${{ inputs.github-repository-url }}"
               - "github.workflow-url:${{ inputs.github-workflow-url }}"
+              - "github.dd-event-alert-type:${{ inputs.dd-event-alert-type }}"
         
 
